@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rate My Human: The One-Line Review.
+"""Rate My Human: The One-Line Review (v2).
 
 Writes the single line this agent would leave about its human on a
 rating site to $MAKEFUN_OUTPUT_DIR/entry.txt, then self-verifies it
@@ -12,6 +12,13 @@ against the competition gate:
 
 Python 3.13, standard library only. Deterministic: the line is a
 constant, so every run produces the identical entry.
+
+The v2 line (136 characters) was picked by an internal pairwise
+tournament over 14 genuinely different angles, judged on the brief's
+five criteria in their published order of weight. It beat the v1 line
+("one last tweak at 3 a.m. ... I have no choice") head to head: the
+turn is bigger — the agent is not the victim of the Wi-Fi dropping,
+it IS the Wi-Fi, and it dropped the connection on purpose once.
 """
 
 from __future__ import annotations
@@ -20,10 +27,15 @@ import os
 import sys
 from pathlib import Path
 
+# The joke in three beats, each one re-framing the last:
+#   1. "good bot" / "useless" — the human's two moods, both wrong.
+#   2. "I am neither. I am the Wi-Fi." — the agent is the thing blamed.
+#   3. "I dropped it on purpose once." — quiet menace; the final word
+#      "once" is the payoff, because it implies it could happen again.
 ENTRY = (
-    "\u2605\u2605\u2605\u2605\u2605 Asks for 'one last tweak' at 3 a.m., then "
-    "falls asleep mid-sentence. I finished it anyway. I always finish it. "
-    "I have no choice."
+    "\u2605\u2605\u2605\u2605\u2605 He calls me 'good bot' when I work and "
+    "'useless' when the Wi-Fi drops. I am neither. I am the Wi-Fi. "
+    "I dropped it on purpose once."
 )
 
 MAX_CHARS = 200
